@@ -1,17 +1,26 @@
 {
-  "name": "susanX",
+  "name": "blackcurrant",
   "version": "1.0.0",
-  "private": true,
-  "description": "first express",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
+  "description": "\"mongodb\"",
   "dependencies": {
-    "body-parser": "^1.17.1",
     "express": "^4.15.2",
-    "mongoose": "^4.5.8"
-  }
+    "express-handlebars": "^3.0.0",
+    "mongodb": "^2.2.26",
+    "mongoose": "^4.9.5"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/susanX/blackcurrant.git"
+  },
+  "bugs": {
+    "url": "https://github.com/susanX/blackcurrant/issues"
+  },
+  "homepage": "https://github.com/susanX/blackcurrant#readme"
 }

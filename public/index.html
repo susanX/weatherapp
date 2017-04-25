@@ -3,8 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-  <h1>Home</h1>
+  <h1>Cars</h1>
+  <!--Cars will be appended here  -->
+  <ul class = "cars"></ul>
+{{#cars}}
+
+<p>Car List below</p>
+  <ul id="cars-list"></ul>
+
+<p>Car List above</p>
+
+  <!-- Your Handlebars script -->
+  <script id="car-template" type="text/x-handlebars-template">
+{{#cars}}
+    <li>{{this.name}} - {{this.bhp}} - {{this.id}} {{this.--v}}</li>
+    {{/#cars}}
+  </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js" charset="utf-8"></script>
+<script src="../main.js"></script>
 </body>
 </html>
