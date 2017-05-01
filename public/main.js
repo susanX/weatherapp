@@ -1,39 +1,47 @@
 
-$(function(){
+//var wpath = "SiteRep.DV.Location.Period[0].Rep[0].T";
+
 
   $.ajax({
-    url: 'http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/350929/json/350929?res=3hourly&key=0944e2ad-fbc9-4be7-ae85-7139236c3834',
-  }).done(function(response){
+    method: 'GET',
+    context: document.body,
+    url: "http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/350929/json/350929?res=3hourly&key=0944e2ad-fbc9-4be7-ae85-7139236c3834",
+}).done(function(response){
+
+  //console.log("Path, Temperature today: "+ response.path+ "˚C");
+  console.log("Temperature today: "+ response.SiteRep.DV.Location.Period[0].Rep[0].T + "˚C");
+  var input = "";
+input = "Temperature today: "+ response.SiteRep.DV.Location.Period[0].Rep[0].T + "˚C"
+console.log("input "+input);
 
 
-
-    var $profileElement = $('#profile');
-
-    var source = $("#profile-template").html();
-
-
-    var templateFn = Handlebars.compile(source);
-
-    var newHTML = templateFn(response.SiteRep.DV.Location.Period[0].Rep[0].T);
-
-    var $out = $("#tempOut");
-    $out.append(newHTML);
-    
-
-  }).fail(function(error){
-    console.error('Error', error);
-  }).always(function(){
-    console.log('Ajax Happened again...');
+document.getElementById("tempOut").innerHTML = input;
+  // response.forEach(function(res){
+  //
   });
-});
+  // createProfile1(input);
+  // }).fail(function(error){
+  //   console.log(error);
+  // }).always(function(){
+  //   console.log('Ajax Data Happened...');
+  // });
+  //
+  // function createProfile1(res){
+  //   var $source = $("#weather-template").html();
+  //   var template = Handlebars.compile($source);
+  //   //var context = {T: input}//, email: res.email};
+  //   var html = template(input);
+  //   updatePage1(html);
+  // }
+  //
+  // function updatePage1(html){
+  //   var $el = $("#tempOut");
+  //   $el.append(html);
+  // }
 
+//#weather-template,#tempOut,temp
 
-
-//////////////////
-
-
-
-
+// Database section--------------------------------------------------------------------------------
 var root = "http://localhost:3333/";
 
 function call(root, path){
@@ -48,23 +56,21 @@ function call(root, path){
   }).fail(function(error){
     console.log(error);
   }).always(function(){
-    console.log('Ajax Happened...');
+    console.log('Ajax from local host Happened...');
   });
-
 }
-
 call(root, "wusers");
 
-function createProfile(res){
-  var $source = $("#wusers-template").html();
-  var template = Handlebars.compile($source);
-  var context = {name: res.name, email: res.email};
-  var html = template(context);
+  function createProfile(res){
+    var $source = $("#wusers-template").html();
+    var template = Handlebars.compile($source);
+    var context = {name: res.name, email: res.email};
+    var html = template(context);
 
-  updatePage(html);
-}
+    updatePage(html);
+  }
 
-function updatePage(html){
-  var $el = $("#wusers");
-  $el.append(html);
-}
+  function updatePage(html){
+    var $el = $("#wusers");
+    $el.append(html);
+  }
