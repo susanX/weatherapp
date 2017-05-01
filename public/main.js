@@ -15,30 +15,6 @@ function callData(){
 };
 callData();
 
-// var wpath = "SiteRep.DV.Location.Period[0].Rep[0].T";
-//   $.ajax({
-//     method: 'GET',
-//     context: document.body,
-//     url: "http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/350929/json/350929?res=3hourly&key=0944e2ad-fbc9-4be7-ae85-7139236c3834",
-// }).done(function(response){
-//
-//   //console.log("Path, Temperature today: "+ response.path+ "˚C");
-// //   console.log("Temperature today: "+ response.SiteRep.DV.Location.Period[0].Rep[0].T + "˚C");
-// //   var input = "";
-// // input = "Temperature today: "+ response.SiteRep.DV.Location.Period[0].Rep[0].T + "˚C"
-// // console.log("input "+input);
-//
-//
-// // document.getElementById("tempOut").innerHTML = input;
-//   response.forEach(function(res){
-//
-//   });
-//   createProfile1(res);
-//   }).fail(function(error){
-//     console.log(error);
-//   }).always(function(){
-//     console.log('Ajax Data Happened...');
-//   });
 
   function createProfile1(res){
     var $source = $("#weather-template").html();
@@ -88,3 +64,28 @@ callUsers(root, "wusers");
     var $el = $("#wusers");
     $el.append(html);
   }
+//reserve innerhtml
+// var wpath = "SiteRep.DV.Location.Period[0].Rep[0].T";
+//   $.ajax({
+//     method: 'GET',
+//     context: document.body,
+//     url: "http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/350929/json/350929?res=3hourly&key=0944e2ad-fbc9-4be7-ae85-7139236c3834",
+// }).done(function(response){
+//
+//   //console.log("Path, Temperature today: "+ response.path+ "˚C");
+// //   console.log("Temperature today: "+ response.SiteRep.DV.Location.Period[0].Rep[0].T + "˚C");
+// //   var input = "";
+// // input = "Temperature today: "+ response.SiteRep.DV.Location.Period[0].Rep[0].T + "˚C"
+// // console.log("input "+input);
+//
+//
+// // document.getElementById("tempOut").innerHTML = input;
+//   response.forEach(function(res){
+//
+//   });
+//   createProfile1(res);
+//   }).fail(function(error){
+//     console.log(error);
+//   }).always(function(){
+//     console.log('Ajax Data Happened...');
+//   });
