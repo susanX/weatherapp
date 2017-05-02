@@ -1,91 +1,73 @@
-function callData(){
+$(function(){
+
+  function updatePage(html){
+    $("#tempOut").append(html);
+  }
+
+  function createHTML(res){
+    var $source = $("#weather-template").html();
+    var template = Handlebars.compile($source);
+    var context = {T: res.SiteRep.DV.Location.Period[0].Rep[0].T, Pp: res.SiteRep.DV.Location.Period[0].Rep[0].Pp, Day: res.SiteRep.DV.Location.Period[0].value};
+    var html = template(context);
+    return html;
+  }
+
+function initialise(){
   $.ajax({
     method: 'GET',
     context: document.body,
      url: "http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/350929/json/350929?res=3hourly&key=0944e2ad-fbc9-4be7-ae85-7139236c3834",
   }).done(function(response){
+    console.log(response);
     //response.forEach(function(res){
-      createProfile1(response);
+      var html = createHTML(response);
+      updatePage(html);
     //});
   }).fail(function(error){
     console.log(error);
-  }).always(function(){
-    console.log('Ajax data from local host Happened...');
   });
 };
-callData();
 
+initialise();
 
-  function createProfile1(res){
-    var $source = $("#weather-template").html();
-    var template = Handlebars.compile($source);
-    var context = {T: res.SiteRep.DV.Location.Period[0].Rep[0].T}//, email: res.email};
-    var html = template(context);
-    updatePage1(html);
-  }
-
-  function updatePage1(html){
-    var $el = $("#tempOut");
-    $el.append(html);
-  }
-
-//#weather-template,#tempOut,temp
-
-// Database section--------------------------------------------------------------------------------
-var root = "http://localhost:3333/";
-
-function callUsers(root, path){
+function submitUser(user){
   $.ajax({
-    method: 'GET',
-    context: document.body,
-    url: root + path,
+    method: 'POST',
+    data: user,
+    url: "/wusers",
   }).done(function(response){
-    response.forEach(function(res){
-      createProfile(res);
-    });
+    console.log(response);
   }).fail(function(error){
     console.log(error);
-  }).always(function(){
-    console.log('Ajax from local host Happened...');
   });
 }
-callUsers(root, "wusers");
 
-  function createProfile(res){
-    var $source = $("#wusers-template").html();
-    var template = Handlebars.compile($source);
-    var context = {name: res.name, email: res.email};
-    var html = template(context);
+var $form = $('form').eq(0);
+console.log($form);
+$form.on('submit.user', function($e){
+  // collect data
+  var name = $('[name="name"]').val();
+  var email = $('[name="email"]').val();
+  console.log('name', name);
+  console.log('email', email);
 
-    updatePage(html);
-  }
+  // create user data
+  var user = {
+    name: name,
+    email: email,
+  };
 
-  function updatePage(html){
-    var $el = $("#wusers");
-    $el.append(html);
-  }
-//reserve innerhtml
-// var wpath = "SiteRep.DV.Location.Period[0].Rep[0].T";
-//   $.ajax({
-//     method: 'GET',
-//     context: document.body,
-//     url: "http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/350929/json/350929?res=3hourly&key=0944e2ad-fbc9-4be7-ae85-7139236c3834",
-// }).done(function(response){
-//
-//   //console.log("Path, Temperature today: "+ response.path+ "˚C");
-// //   console.log("Temperature today: "+ response.SiteRep.DV.Location.Period[0].Rep[0].T + "˚C");
-// //   var input = "";
-// // input = "Temperature today: "+ response.SiteRep.DV.Location.Period[0].Rep[0].T + "˚C"
-// // console.log("input "+input);
-//
-//
-// // document.getElementById("tempOut").innerHTML = input;
-//   response.forEach(function(res){
-//
-//   });
-//   createProfile1(res);
-//   }).fail(function(error){
-//     console.log(error);
-//   }).always(function(){
-//     console.log('Ajax Data Happened...');
-//   });
+  //send to server
+  submitUser(user);
+
+  return false;
+});
+
+
+  //
+  // function updatePage1(html){
+  //   var $el = $("#tempOut");
+  //   $el.append(html);
+  // }
+
+});

@@ -1,0 +1,110 @@
+
+
+@import url('https://fonts.googleapis.com/css?family=Arima+Madurai|Lancelot');
+
+
+
+
+html{
+}
+
+
+/*
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}*/
+
+#logo {
+	width:.7em;
+	border-top: 5px solid black;
+	font-size: 120px;
+	/*font-family: Arima+Madurai;*/
+	font-family: Lancelot;
+}
+/*https://css-tricks.com/snippets/css/meyer-reset/
+ remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+body {
+	line-height: 1;
+	color: black;
+	background: white;
+}
+ol, ul {
+	list-style: none;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+}
+blockquote, q {
+	quotes: "" "";
+}
+/*end Myer*/
+
+.container {
+}
+
+.city {
+	float: left;
+	margin: 5px;
+	padding: 15px;
+	max-width: 300px;
+	height: 300px;
+	line-height:20px;
+	/*background-color:#FFD604;*/
+	border: none;	/*border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: black;
+	border-right-color: black;
+	border-bottom-color: black;
+	border-left-color: black;
+	*/
+}
+
+body{
+	font-family: Arial, Sans
+}
+h1,h2,h3,h4,p{
+   font-family: Arial, Sans
+}
+
+h1{
+font-size:50px,
+font-weight:900
+	font-size: 60px;
+	font-weight: 900;
+	color: #666666;
+	font-size: xx-large;
+}

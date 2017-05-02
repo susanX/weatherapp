@@ -11,7 +11,7 @@
   <script src="../main.js"></script>
 </head>
 <body>
-<h1></h1>
+<h1>What to wear?</h1>
 
   <!-- Handlebars for weather data -->
 
@@ -28,8 +28,8 @@
      <!-- <img src="{{avatar_url}}"/> -->
      </div>
    </script>
-<!-- <img src="smiley.gif" alt="Smiley face" height="42" width="42"> -->
-   <!-- <img src = "./images/gaplightjacket.gif" /> -->
+<img src="smiley.gif" alt="Smiley face" height="42" width="42">
+   <img src = "./images/gaplightjacket.gif >
  <!-- end Handlebars weather data -->
 
  <!-- Handlebars for names and emails-->
@@ -47,6 +47,7 @@
 
 
 
+<p>Enter your name and email then click "Submit":</p>
 
 <!-- <form id="wuserForm" action="/action_page">
   <div class="two-thirds column" id="main">
@@ -59,71 +60,21 @@
 </div>
 </form> -->
 
-<!-- form ..... put back in html-->
-<script>
-// function show(res) {
-//
-//
-// '<ul>'
-// items.map(function(item){
-// return '<li>' + item + '</li>'
-// }).join('')
-// '</ul>'
-//
-// '<form method="post" action="/">'
-// '<p><input type="text" name="item" /></p>'
-// '<p><input type="submit" value="Add Item" /></p>'
-// '</form></body></html>';
-// res.setHeader('Content-Type', 'text/html');
-// res.setHeader('Content-Length', Buffer.byteLength(html));
-// res.end(html);
-// }
-</script>
-<!-- end form.... -->
-
-
-
-
-      <!-- <form id="xxnewwuser" action="/wusers" method="POST">
-
-          <!- <img src="img/logo.png" alt="logo" id="logo" /> -->
-        <!-- <label> Name: </label><br>
-        <input type="text" name="name" size="30" maxlength="30"><br>
-        <label>Enter your email to receive updates.</label><br>
-        <input type="text" email="email" size="30" maxlength="30"> -->
-
-          <!-- <fieldset> -->
-            <!-- <legend></legend> -->
-        <!-- <input type="submit" id="submit" value="Enter" /> -->
-          <!-- </fieldset> -->
-
-      <!-- </form> -->
-
-
-      <form id="newwuser" action="/wusers" method="POST">
-        Name:<br>
-        <input type="text" name="name" ><br>
-        <!-- <input type="submit" value="Submit"> -->
-        Email:<br>
-        <input type="text" name="email" ><br><br>
-        <input type="submit" value="Submit">
+<div class="container login">
+      <form id="newPwd" action="/login" method="post">
+        <div class="one-third column">
+          <!-- <img src="img/logo.png" alt="logo" id="logo" /> -->
+        </div>
+        <div class="two-thirds column" id="main">
+          <fieldset>
+            <legend></legend>
+            <label for="pwd">Email</label>
+            <input type="password" id="pwd" />
+            <input type="submit" id="submit" value="submit" />
+          </fieldset>
+        </div><!-- .two-thirds -->
       </form>
-
-
-
-
-
-
-
-      <!-- <script>
-      var queryString = $('#newwuser').serialize();
-      console.log(newwuser);
-      </script> -->
-
-
-
-
-
+    </div><!-- .container -->
     <!-- <script src="js/utilities.js"></script> -->
     <!-- <script src="js/disable-submit.js"></script> -->
 
@@ -144,9 +95,16 @@ var name = document.getElementById("fname").value;
 console.log(fname);
 console.log(email);
 var name = document.getElementById("email").value;
+
+
+
+
 var nameValue = document.getElementById("uniqueID").value
 
  -->
+
+
+
 
 </body>
 </html>

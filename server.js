@@ -6,8 +6,18 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose'); // DB control program
 // --------------------------------------------
+//....new
+// Make our db accessible to our router
+app.use(function(req,res,next){
+    req.db = db;
+    next();
+});
+
+//var routes = require('./routes/index');
+// var users = require('./routes/wusers');
 
 
+//...new
 // 2--------------------------------------------
 // This is our middleware that the server will use
 app.use(express.static('public'));
@@ -15,6 +25,12 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
+
+//........
+// app.use('/', routes);
+// app.use('/wusers', wusers);
+
+//..........
 // --------------------------------------------
 
 
@@ -71,8 +87,16 @@ app.get('/wusers/', function(req,res){
 //       return res.status(200).send(wusers)
 //    });
 
-//Post a new wuser to the database
+
+// submitForms = function(){
+//     document.forms["name"].submit();
+//     document.forms["email"].submit();
+// }
+
+//POST --------------------------------------------------
 app.post('/wusers',function(req, res){
+  console.log(req.body);
+  var body = "testemail@gmail.com";
   var wuserData = req.body;
   var newWuser = new Wuser(wuserData);
   newWuser.save(function(error, wuser){
@@ -83,7 +107,10 @@ app.post('/wusers',function(req, res){
   })
 });
 
+//DELETE------------------------------------------------
+
 app.delete("/wusers/:_id", function(req, res){
+
     var wusersIdForDeletion = req.params._id;
 
   Wuser.remove({ _id: wusersIdForDeletion }, function (err) {
@@ -93,6 +120,7 @@ app.delete("/wusers/:_id", function(req, res){
   });
 });
 
+//DELETE------------------------------------------------
 //works in shell
 //db.wusers.deleteOne( { "_id" : ObjectId("58f9036e925aca049c64c54d") } );
 
@@ -141,7 +169,49 @@ app.delete("/wusers/:_id", function(req, res){
 //   });
 // };
 
+// /switch quest method new- goes to array email------------------------------------------------------------
+var http = require('http');
+var email = [];
+var server = http.createServer(function(req, res){
+  if ('/' == req.url) {
+    switch (req.method) {
+    case 'GET':
+    show(res);
+    break;
+    case 'POST':
+    add(req, res);
+    break;
+    default:
+    badRequest(res);
+    }
+    } else {
+    notFound(res);
+    }
+});
 
+
+//add() function new -----------------
+var qs = require('querystring');
+function add(req, res) {
+var body = '';
+req.setEncoding('utf8');
+req.on('data', function(chunk){ body += chunk });
+req.on('end', function(){
+var obj = qs.parse(body);
+email.push(obj.item);
+console.log(item);
+show(res);
+});
+}
+// end add() function -----------------
+
+
+//form////------------
+
+
+
+
+///switch quest method-------------------------------------------------------------
 
 // --------------------------------------------
 app.listen(3333, function(){
